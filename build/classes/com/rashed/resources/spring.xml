@@ -1,0 +1,28 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+		"http://www.springframework.org/dtd/spring-beans.dtd">
+
+
+<beans>
+
+	<bean id="bds" class="org.apache.commons.dbcp.BasicDataSource">
+
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@Rashed:1033:xe" />
+		<property name="username" value="system" />
+		<property name="password" value="12345" />
+		<property name="maxActive" value="15" />
+		<property name="maxIdle" value="5" />
+		<property name="maxWait" value="5000" />
+
+	</bean>
+	<bean id="dao" class="com.rashed.daoimpl.StudentDaoImp" >
+	
+		<property name="ds" ref="bds" />
+	
+	</bean>
+	
+	<bean id="bo" class="com.rashed.business.StudentBoImpl">
+		<property name="dao" ref="dao" />
+	</bean>
+
+</beans>
